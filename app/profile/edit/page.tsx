@@ -144,7 +144,7 @@ function EditProfilePage() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between gap-8">
-          <div clssName="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <label className="font-bold select-none" htmlFor="firstName">First name:</label>
 
             <InputGroup>
