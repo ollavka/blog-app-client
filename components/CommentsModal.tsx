@@ -39,7 +39,7 @@ export const CommentsModal: FC<Props> = ({ postId, onClose }) => {
   const { errors, isValid, isSubmitting } = formState;
 
   useEffect(() => {
-    setPageLoading(setPageLoading);
+    setPageLoading(false);
   }, []);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export const CommentsModal: FC<Props> = ({ postId, onClose }) => {
       const data = await commentsService.createComment({
         message,
         postId,
-        userId: user.id,
+        userId: user?.id as string,
       });
 
       setCommentList((prev) => [data, ...prev]);

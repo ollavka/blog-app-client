@@ -13,6 +13,17 @@ type Props = {
 
 export const CommentItem: FC<Props> = ({ comment }) => {
   const { user } = comment;
+
+  const date = new Date(comment.createdAt);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  const formattedDate = `${year}-${month}-${day}/${hours}-${minutes}`;
+
   return (
     <Box
       p="4"
@@ -33,7 +44,7 @@ export const CommentItem: FC<Props> = ({ comment }) => {
           <p className="font-bold">{user.username}</p>
         </Link>
         <Spacer />
-        <p className="text-gray-500">{comment.createdAt}</p>
+        <p className="text-gray-500">{formattedDate}</p>
       </div>
       <p className="mt-2">{comment.message}</p>
     </Box>

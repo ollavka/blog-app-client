@@ -16,6 +16,7 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import { Button, InputGroup, InputLeftElement, Input } from '@chakra-ui/react';
 import { capitalize } from '@/utils/capitalize';
 import Link from 'next/link';
+import { ApiError } from 'next/dist/server/api-utils';
 
 function LoginForm() {
   const { error: apiError } = useAppSelector(selectAuth);
@@ -36,6 +37,12 @@ function LoginForm() {
       return;
     }
 
+    if (!('errors' in apiError)) {
+      toast.error(`Oops: ${apiError.message}`);
+
+      return;
+    }
+    
     const apiErrorList = Object.entries(apiError.errors);
 
     if (!apiErrorList.length) {
@@ -55,7 +62,7 @@ function LoginForm() {
   ) => {
     const data = await dispatch(login(credentials));
 
-    if (data?.error as AxiosError) {
+    if ('error' in data) {
       toast.error(`Oops: ${data.error?.message || 'Something went wrong'}`);
       setStartLogin(false);
 

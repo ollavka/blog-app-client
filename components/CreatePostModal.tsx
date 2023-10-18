@@ -41,10 +41,10 @@ export const CreatePostModal: FC<Props> = ({ onClose }) => {
 
     try {
       const data = await dispatch(
-        createNewPost({ userId: user.id, description })
+        createNewPost({ userId: (user?.id as string), description })
       );
 
-      if (data?.error) {
+      if ('error' in data) {
         toast.error('Oops: Something went wrong');
         return;
       }
