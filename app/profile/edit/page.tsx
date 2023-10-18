@@ -163,7 +163,7 @@ function EditProfilePage() {
             </InputGroup>
           </div>
 
-          <div clssName="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <label className="font-bold select-none" htmlFor="lastName">Last name:</label>
 
             <InputGroup>
