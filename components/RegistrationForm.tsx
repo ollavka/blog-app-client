@@ -34,11 +34,11 @@ function RegistrationForm() {
       return;
     }
 
-    const apiErrorList = apiError.errors
+    const apiErrorList = 'errors' in apiError
       ? Object.entries(apiError.errors)
       : null;
 
-    if (!apiErrorList || !apiErrorList.length) {
+    if (!apiErrorList || !apiErrorList.length || !('errors' in apiErrorList)) {
       toast.error(`Oops: ${apiError.message}`);
 
       return;
