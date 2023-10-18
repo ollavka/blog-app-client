@@ -27,7 +27,6 @@ export const CommentItem: FC<Props> = ({ comment }) => {
         <Link href={`/profile/${user.username}`}>
           <Avatar
             src={user.avatar || '/images/avatar.png'}
-            alt="avatar"
             size="md"
             mr="2"
           />

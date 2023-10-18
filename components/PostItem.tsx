@@ -28,7 +28,7 @@ export const PostItem: FC<Props> = ({ post }) => {
       >
         <div className="flex flex-col md:flex-row">
           <Link href={`/profile/${user.username}`}>
-            <Avatar src={user.avatar || '/images/avatar.png'} alt="avatar" size="md" mr="2" />
+            <Avatar src={user.avatar || '/images/avatar.png'} size="md" mr="2" />
             <p className="font-bold">{user.username}</p>
           </Link>
           <Spacer />
